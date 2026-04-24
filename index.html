@@ -1,0 +1,326 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.app{background:#1a1a1a;color:#e0e0e0;font-family:var(--font-sans);min-height:100vh;padding:16px;}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:14px;border-bottom:0.5px solid #333;margin-bottom:16px;gap:8px;flex-wrap:wrap;}
+.topbar-title{font-size:18px;font-weight:500;color:#fff;}
+.topbar-sub{font-size:12px;color:#888;margin-top:3px;}
+.mode-btns{display:flex;gap:6px;flex-shrink:0;}
+.mode-btn{font-size:12px;padding:6px 14px;border-radius:8px;border:1px solid #444;background:#2a2a2a;color:#aaa;cursor:pointer;}
+.mode-btn.active{background:#fff;color:#111;border-color:#fff;font-weight:500;}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;}
+@media(max-width:500px){.metrics{grid-template-columns:repeat(2,1fr);}}
+.metric{background:#242424;border-radius:10px;padding:12px;}
+.metric-label{font-size:11px;color:#888;margin-bottom:4px;}
+.metric-value{font-size:24px;font-weight:500;}
+.metric-sub{font-size:10px;color:#555;margin-top:2px;}
+.sec-label{font-size:11px;font-weight:500;color:#666;text-transform:uppercase;letter-spacing:.07em;margin:0 0 10px;}
+.partners-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:520px){.partners-grid{grid-template-columns:1fr;}}
+.pcard{background:#242424;border:1px solid #333;border-radius:12px;padding:14px;}
+.pcard-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;}
+.pname{font-size:14px;font-weight:500;color:#fff;}
+.pname-input{font-size:14px;font-weight:500;color:#fff;background:transparent;border:none;border-bottom:1px solid #555;outline:none;width:130px;}
+.status-sel{font-size:11px;padding:3px 6px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#ccc;cursor:pointer;}
+.status-badge{font-size:11px;padding:3px 9px;border-radius:6px;font-weight:500;}
+.sb-strong{background:#0f3d1f;color:#4ade80;}
+.sb-mixed{background:#3d2600;color:#f59e0b;}
+.sb-transition{background:#0c2a4a;color:#60a5fa;}
+.sb-early{background:#2a1a4a;color:#a78bfa;}
+.sb-default{background:#2a2a2a;color:#aaa;}
+.prog-row{margin-bottom:10px;}
+.prog-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;gap:4px;}
+.prog-label-text{font-size:12px;color:#ddd;flex:1;}
+.prog-label-input{font-size:12px;color:#ddd;background:#1a1a1a;border:1px solid #444;border-radius:6px;outline:none;padding:3px 6px;flex:1;min-width:0;}
+.prog-actions{display:flex;align-items:center;gap:4px;flex-shrink:0;}
+.del-btn{background:#2a2a2a;border:1px solid #444;color:#888;border-radius:5px;padding:2px 6px;cursor:pointer;font-size:11px;line-height:1.4;}
+.prog-pct{font-size:12px;color:#aaa;min-width:30px;text-align:right;}
+.bar-bg{height:4px;background:#333;border-radius:99px;overflow:hidden;margin-bottom:4px;}
+.bar-fill{height:4px;border-radius:99px;transition:width .2s;}
+.prog-slider{width:100%;accent-color:#4ade80;margin-bottom:6px;}
+.tag-row{display:flex;flex-wrap:wrap;gap:4px;}
+.tag{font-size:11px;padding:2px 7px;border-radius:5px;}
+.t-deployed{background:#0f3d1f;color:#4ade80;}
+.t-hold{background:#3d2600;color:#f59e0b;}
+.t-qa{background:#0c2a4a;color:#60a5fa;}
+.t-progress{background:#2a1a4a;color:#a78bfa;}
+.t-risk{background:#3d0f0f;color:#f87171;}
+.t-launch{background:#063d2e;color:#34d399;}
+.tag-sel{font-size:11px;padding:3px 6px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#ccc;cursor:pointer;width:100%;}
+.add-btn{font-size:12px;color:#60a5fa;background:#0c2a4a;border:1px solid #185FA5;border-radius:6px;padding:5px 10px;cursor:pointer;margin-top:6px;width:100%;}
+.insight{font-size:11px;color:#666;border-top:0.5px solid #333;padding-top:8px;margin-top:8px;font-style:italic;line-height:1.5;}
+.insight-input{font-size:11px;color:#888;background:transparent;border:none;border-bottom:1px solid #444;outline:none;width:100%;font-style:italic;}
+.chart-row{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;margin-bottom:16px;}
+@media(max-width:520px){.chart-row{grid-template-columns:1fr;}}
+.chart-card{background:#242424;border:1px solid #333;border-radius:12px;padding:14px;}
+.snap-wrap{background:#242424;border:1px solid #333;border-radius:12px;padding:4px;margin-bottom:16px;overflow-x:auto;}
+.snap-table{width:100%;font-size:12px;border-collapse:collapse;min-width:340px;}
+.snap-table th{text-align:left;font-weight:500;color:#666;font-size:11px;padding:6px 10px;border-bottom:0.5px solid #333;}
+.snap-table td{padding:7px 10px;border-bottom:0.5px solid #2a2a2a;color:#ccc;vertical-align:top;}
+.snap-table tr:last-child td{border-bottom:none;}
+.snap-input{font-size:12px;color:#ccc;background:transparent;border:none;border-bottom:1px solid #444;outline:none;width:100%;}
+.risks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:16px;}
+@media(max-width:520px){.risks-grid{grid-template-columns:1fr;}}
+.risk-item{background:#242424;border:1px solid #333;border-left:3px solid;border-radius:0;padding:10px 12px;}
+.risk-text{font-size:12px;color:#ccc;line-height:1.5;}
+.risk-input{font-size:12px;color:#ccc;background:transparent;border:none;border-bottom:1px solid #444;outline:none;width:100%;line-height:1.5;}
+.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+@media(max-width:520px){.ach-grid{grid-template-columns:1fr;}}
+.ach-item{background:#242424;border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px;}
+.ach-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;margin-top:5px;flex-shrink:0;}
+.ach-text{font-size:12px;color:#ccc;line-height:1.5;}
+.ach-input{font-size:12px;color:#ccc;background:transparent;border:none;border-bottom:1px solid #444;outline:none;width:100%;line-height:1.5;}
+</style>
+
+<div class="app" id="app">
+<div class="topbar">
+  <div>
+    <div class="topbar-title">Content development summary</div>
+    <div class="topbar-sub">Academic year 2025–2026 · Updated <span id="upd-date"></span></div>
+  </div>
+  <div class="mode-btns">
+    <button class="mode-btn active" id="btn-view" onclick="setMode('view')">View</button>
+    <button class="mode-btn" id="btn-edit" onclick="setMode('edit')">Edit</button>
+  </div>
+</div>
+
+<div class="metrics" id="metrics-row"></div>
+<div class="sec-label">Partner progress</div>
+<div class="partners-grid" id="partners-container"></div>
+
+<div class="chart-row">
+  <div class="chart-card">
+    <div class="sec-label" style="margin-bottom:8px;">CPD courses – completion</div>
+    <div style="position:relative;width:100%;height:190px;">
+      <canvas id="cpdChart" role="img" aria-label="CPD course completion chart">CPD completion.</canvas>
+    </div>
+  </div>
+  <div class="chart-card">
+    <div class="sec-label" style="margin-bottom:8px;">Status breakdown</div>
+    <div style="position:relative;width:100%;height:140px;">
+      <canvas id="statusChart" role="img" aria-label="Status donut chart">Status breakdown.</canvas>
+    </div>
+    <div id="donut-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;"></div>
+  </div>
+</div>
+
+<div class="sec-label">Progress snapshot</div>
+<div class="snap-wrap"><table class="snap-table">
+  <thead><tr><th style="width:28%;">Category</th><th style="width:50%;">Programmes</th><th style="width:22%;">Status</th></tr></thead>
+  <tbody id="snap-body"></tbody>
+</table></div>
+
+<div class="sec-label">Key risks</div>
+<div class="risks-grid" id="risks-container"></div>
+
+<div class="sec-label" style="margin-top:14px;">Key achievements</div>
+<div class="ach-grid" id="ach-container"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const TAG_OPTIONS=['deployed','hold','qa','progress','risk','launch'];
+const TAG_LABEL={deployed:'Deployed',hold:'On hold',qa:'In QA',progress:'In progress',risk:'At risk',launch:'Ready to launch'};
+const TAG_CLASS={deployed:'t-deployed',hold:'t-hold',qa:'t-qa',progress:'t-progress',risk:'t-risk',launch:'t-launch'};
+const BAR_COLORS={deployed:'#4ade80',hold:'#f59e0b',qa:'#60a5fa',progress:'#a78bfa',risk:'#f87171',launch:'#34d399'};
+const STATUS_OPTIONS=['Strong','Mixed','In transition','Early stage','Completed','On hold','At risk'];
+const STATUS_CLASS={'Strong':'sb-strong','Mixed':'sb-mixed','In transition':'sb-transition','Early stage':'sb-early','Completed':'sb-strong','On hold':'sb-mixed','At risk':'sb-mixed'};
+
+let mode='view';
+let cpdInst=null, donutInst=null;
+
+let data={
+  partners:[
+    {id:1,name:'GBS Malta',status:'Mixed',insight:'Strong flagship MBA progress; Level 4 stalled by external restructuring.',progs:[
+      {id:1,name:'MBA Programme',pct:90,tags:['deployed']},
+      {id:2,name:'Level 4 Business Management',pct:15,tags:['hold']},
+      {id:3,name:'Level 4 Study Skills',pct:15,tags:['hold']}
+    ]},
+    {id:2,name:'GBS Dubai',status:'In transition',insight:'Focus on delivery modernisation; transitioning to asynchronous format.',progs:[
+      {id:1,name:'HND Programme',pct:45,tags:['progress']}
+    ]},
+    {id:3,name:'EP (English Pathway)',status:'Strong',insight:'Best-performing partner; full readiness across face-to-face and online modes.',progs:[
+      {id:1,name:'EAP UG',pct:100,tags:['launch']},
+      {id:2,name:'Foundation Programme',pct:70,tags:['launch']}
+    ]},
+    {id:4,name:'Schiller',status:'Early stage',insight:'Good early momentum; risk from reliance on partner-provided academic content.',progs:[
+      {id:1,name:'MA International Relations',pct:20,tags:['progress','risk']}
+    ]}
+  ],
+  cpd:[
+    {id:1,name:'Digital Marketing Essentials',pct:100,tag:'deployed'},
+    {id:2,name:'Finance for Non-Financial Mgrs',pct:100,tag:'qa'},
+    {id:3,name:'Tools & Techniques for Planning',pct:60,tag:'progress'},
+    {id:4,name:'Team Building',pct:0,tag:'hold'}
+  ],
+  snapshot:[
+    {cat:'Fully completed & deployed',progs:'MBA (GBS Malta), Digital Marketing (CPD), EAP UG (EP)',status:'deployed'},
+    {cat:'Pre-launch / QA',progs:'Finance CPD, EAP UG (EP), Foundations (near)',status:'qa'},
+    {cat:'In progress',progs:'GBS Dubai HND, Schiller MA, CPD planning course',status:'progress'},
+    {cat:'On hold',progs:'GBS Malta Level 4 (×2), CPD Team Building',status:'hold'},
+    {cat:'At risk',progs:'Schiller MA (SME content awaited)',status:'risk'}
+  ],
+  risks:[
+    {id:1,text:'Partner restructuring (GBS Malta) impacting Level 4 delivery timelines',color:'#f87171'},
+    {id:2,text:'SME content delays (Schiller) may affect final May 2026 completion',color:'#f59e0b'},
+    {id:3,text:'Transition complexity in GBS Dubai async conversion',color:'#60a5fa'},
+    {id:4,text:'QA bottlenecks slowing CPD deployment pipeline',color:'#a78bfa'}
+  ],
+  achievements:[
+    {id:1,text:'Successful delivery of multiple fully completed programmes across partners'},
+    {id:2,text:'CPD portfolio expansion including 120 hours of Digital Marketing content'},
+    {id:3,text:'Progress toward flexible delivery models (online + asynchronous)'},
+    {id:4,text:'Schiller MA Unit 1 delivered ahead of target schedule'}
+  ]
+};
+
+function setMode(m){
+  mode=m;
+  document.getElementById('btn-view').className='mode-btn'+(m==='view'?' active':'');
+  document.getElementById('btn-edit').className='mode-btn'+(m==='edit'?' active':'');
+  render();
+}
+
+function computeMetrics(){
+  let deployed=0,prelaunch=0,inprog=0,onhold=0;
+  data.partners.forEach(p=>p.progs.forEach(pr=>{
+    if(pr.tags.includes('deployed')||pr.tags.includes('launch'))deployed++;
+    else if(pr.tags.includes('qa'))prelaunch++;
+    else if(pr.tags.includes('hold'))onhold++;
+    else if(pr.tags.includes('progress'))inprog++;
+  }));
+  data.cpd.forEach(c=>{
+    if(c.tag==='deployed'||c.tag==='launch')deployed++;
+    else if(c.tag==='qa')prelaunch++;
+    else if(c.tag==='hold')onhold++;
+    else if(c.tag==='progress')inprog++;
+  });
+  return{deployed,prelaunch,inprog,onhold};
+}
+
+function renderMetrics(){
+  const m=computeMetrics();
+  document.getElementById('metrics-row').innerHTML=`
+    <div class="metric"><div class="metric-label">Fully deployed</div><div class="metric-value" style="color:#4ade80;">${m.deployed}</div><div class="metric-sub">Completed & live</div></div>
+    <div class="metric"><div class="metric-label">In QA / Pre-launch</div><div class="metric-value" style="color:#60a5fa;">${m.prelaunch}</div><div class="metric-sub">Ready, pending sign-off</div></div>
+    <div class="metric"><div class="metric-label">In progress</div><div class="metric-value" style="color:#a78bfa;">${m.inprog}</div><div class="metric-sub">Active development</div></div>
+    <div class="metric"><div class="metric-label">On hold</div><div class="metric-value" style="color:#f59e0b;">${m.onhold}</div><div class="metric-sub">Paused or blocked</div></div>`;
+}
+
+function renderPartners(){
+  const c=document.getElementById('partners-container');
+  c.innerHTML='';
+  data.partners.forEach((p,pi)=>{
+    const div=document.createElement('div');
+    div.className='pcard';
+    const sc=STATUS_CLASS[p.status]||'sb-default';
+    const nameHtml=mode==='edit'
+      ?`<input class="pname-input" value="${p.name}" oninput="data.partners[${pi}].name=this.value">`
+      :`<div class="pname">${p.name}</div>`;
+    const statusHtml=mode==='edit'
+      ?`<select class="status-sel" onchange="data.partners[${pi}].status=this.value;renderPartners();">${STATUS_OPTIONS.map(s=>`<option value="${s}"${s===p.status?' selected':''}>${s}</option>`).join('')}</select>`
+      :`<div class="status-badge ${sc}">${p.status}</div>`;
+    const progsHtml=p.progs.map((pr,pri)=>{
+      const bc=BAR_COLORS[pr.tags[0]]||'#888';
+      const labelHtml=mode==='edit'
+        ?`<input class="prog-label-input" value="${pr.name}" oninput="data.partners[${pi}].progs[${pri}].name=this.value">`
+        :`<span class="prog-label-text">${pr.name}</span>`;
+      const delHtml=mode==='edit'?`<button class="del-btn" onclick="deleteProg(${pi},${pri})">✕</button>`:'';
+      const sliderHtml=mode==='edit'?`<input type="range" min="0" max="100" step="1" value="${pr.pct}" class="prog-slider" oninput="updateProgPct(${pi},${pri},this.value)">`:'' ;
+      const tagsHtml=mode==='edit'
+        ?pr.tags.map((t,ti)=>`<select class="tag-sel" onchange="data.partners[${pi}].progs[${pri}].tags[${ti}]=this.value;render();">${TAG_OPTIONS.map(o=>`<option value="${o}"${o===t?' selected':''}>${TAG_LABEL[o]}</option>`).join('')}</select>`).join('')
+        :pr.tags.map(t=>`<span class="tag ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
+      return `<div class="prog-row">
+        <div class="prog-top">${labelHtml}<div class="prog-actions">${delHtml}<span class="prog-pct">${pr.pct}%</span></div></div>
+        <div class="bar-bg"><div class="bar-fill" style="width:${pr.pct}%;background:${bc};"></div></div>
+        ${sliderHtml}<div class="tag-row">${tagsHtml}</div>
+      </div>`;
+    }).join('');
+    const addBtn=mode==='edit'?`<button class="add-btn" onclick="addProg(${pi})">+ add programme</button>`:'';
+    const insightHtml=mode==='edit'
+      ?`<div class="insight"><input class="insight-input" value="${p.insight}" oninput="data.partners[${pi}].insight=this.value"></div>`
+      :`<div class="insight">${p.insight}</div>`;
+    div.innerHTML=`<div class="pcard-header">${nameHtml}${statusHtml}</div>${progsHtml}${addBtn}${insightHtml}`;
+    c.appendChild(div);
+  });
+}
+
+function renderCharts(){
+  const cpdLabels=data.cpd.map(c=>c.name);
+  const cpdVals=data.cpd.map(c=>c.pct);
+  const cpdColors=data.cpd.map(c=>BAR_COLORS[c.tag]||'#888');
+  if(cpdInst)cpdInst.destroy();
+  cpdInst=new Chart(document.getElementById('cpdChart'),{
+    type:'bar',
+    data:{labels:cpdLabels,datasets:[{data:cpdVals,backgroundColor:cpdColors,borderRadius:4,borderSkipped:false}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+Math.round(ctx.parsed.x)+'%'}}},
+      scales:{
+        x:{min:0,max:100,ticks:{color:'#666',font:{size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.05)'}},
+        y:{ticks:{color:'#aaa',font:{size:10}}}
+      }}
+  });
+  const m=computeMetrics();
+  const dData=[m.deployed,m.prelaunch,m.inprog,m.onhold];
+  const dLabels=['Deployed','Pre-launch','In progress','On hold'];
+  const dColors=['#4ade80','#60a5fa','#a78bfa','#f59e0b'];
+  if(donutInst)donutInst.destroy();
+  donutInst=new Chart(document.getElementById('statusChart'),{
+    type:'doughnut',
+    data:{labels:dLabels,datasets:[{data:dData,backgroundColor:dColors,borderWidth:0,hoverOffset:4}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:false}}}
+  });
+  document.getElementById('donut-legend').innerHTML=dLabels.map((l,i)=>
+    `<span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#888;"><span style="width:8px;height:8px;border-radius:2px;background:${dColors[i]};display:inline-block;"></span>${l} (${dData[i]})</span>`
+  ).join('');
+}
+
+function renderSnapshot(){
+  document.getElementById('snap-body').innerHTML=data.snapshot.map((s,si)=>{
+    const tag=`<span class="tag ${TAG_CLASS[s.status]||''}">${TAG_LABEL[s.status]||s.status}</span>`;
+    if(mode==='edit')return`<tr>
+      <td><input class="snap-input" style="font-size:11px;color:#888;" value="${s.cat}" oninput="data.snapshot[${si}].cat=this.value"></td>
+      <td><input class="snap-input" value="${s.progs}" oninput="data.snapshot[${si}].progs=this.value"></td>
+      <td><select class="tag-sel" onchange="data.snapshot[${si}].status=this.value;renderSnapshot();">${TAG_OPTIONS.map(o=>`<option value="${o}"${o===s.status?' selected':''}>${TAG_LABEL[o]}</option>`).join('')}</select></td>
+    </tr>`;
+    return`<tr><td style="color:#666;font-size:11px;">${s.cat}</td><td>${s.progs}</td><td>${tag}</td></tr>`;
+  }).join('');
+}
+
+function renderRisks(){
+  document.getElementById('risks-container').innerHTML=data.risks.map((r,ri)=>{
+    const content=mode==='edit'
+      ?`<input class="risk-input" value="${r.text}" oninput="data.risks[${ri}].text=this.value">`
+      :`<div class="risk-text">${r.text}</div>`;
+    return`<div class="risk-item" style="border-left-color:${r.color};">${content}</div>`;
+  }).join('');
+}
+
+function renderAchievements(){
+  document.getElementById('ach-container').innerHTML=data.achievements.map((a,ai)=>{
+    const content=mode==='edit'
+      ?`<input class="ach-input" value="${a.text}" oninput="data.achievements[${ai}].text=this.value">`
+      :`<div class="ach-text">${a.text}</div>`;
+    return`<div class="ach-item"><div class="ach-dot"></div>${content}</div>`;
+  }).join('');
+}
+
+function render(){
+  renderMetrics();
+  renderPartners();
+  renderCharts();
+  renderSnapshot();
+  renderRisks();
+  renderAchievements();
+}
+
+function updateProgPct(pi,pri,val){
+  data.partners[pi].progs[pri].pct=parseInt(val);
+  renderMetrics();renderPartners();renderCharts();
+}
+function deleteProg(pi,pri){data.partners[pi].progs.splice(pri,1);render();}
+function addProg(pi){data.partners[pi].progs.push({id:Date.now(),name:'New programme',pct:0,tags:['progress']});render();}
+
+document.getElementById('upd-date').textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+render();
+</script>
