@@ -1,26 +1,69 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Development Reports 2025–2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-.app{background:#1a1a1a;color:#e0e0e0;font-family:var(--font-sans);min-height:100vh;padding:16px;}
-.topbar{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:14px;border-bottom:0.5px solid #333;margin-bottom:16px;gap:8px;flex-wrap:wrap;}
+html,body{height:100%;}
+body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;}
+
+/* ── Layout ── */
+.shell{display:flex;min-height:100vh;}
+.sidebar{width:220px;flex-shrink:0;background:#141414;border-right:0.5px solid #2a2a2a;display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;}
+.main{margin-left:220px;flex:1;min-height:100vh;}
+@media(max-width:640px){
+  .sidebar{width:100%;height:auto;position:relative;flex-direction:row;border-right:none;border-bottom:0.5px solid #2a2a2a;}
+  .main{margin-left:0;}
+  .shell{flex-direction:column;}
+  .sidebar-logo{padding:14px 16px;border-bottom:none!important;}
+  .nav-links{flex-direction:row;padding:8px 12px;gap:6px;flex-wrap:wrap;}
+  .nav-item{padding:6px 12px;}
+  .sidebar-footer{display:none;}
+}
+
+/* ── Sidebar ── */
+.sidebar-logo{padding:20px 18px 16px;border-bottom:0.5px solid #2a2a2a;}
+.logo-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#555;margin-bottom:4px;}
+.logo-title{font-size:14px;font-weight:500;color:#fff;line-height:1.3;}
+.nav-links{display:flex;flex-direction:column;padding:12px 10px;gap:2px;flex:1;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:#888;border:none;background:none;width:100%;text-align:left;transition:all .15s;}
+.nav-item:hover{background:#242424;color:#ccc;}
+.nav-item.active{background:#242424;color:#fff;}
+.nav-item .nav-icon{width:16px;height:16px;border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;}
+.nav-item.active .nav-icon{background:#7030A0;}
+.nav-item:not(.active) .nav-icon{background:#2a2a2a;}
+.nav-divider{height:0.5px;background:#2a2a2a;margin:8px 10px;}
+.nav-section-label{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#444;padding:6px 10px 4px;}
+.sidebar-footer{padding:16px 18px;border-top:0.5px solid #2a2a2a;font-size:10px;color:#444;line-height:1.5;}
+
+/* ── Pages ── */
+.page{display:none;padding:20px 24px 40px;}
+.page.active{display:block;}
+
+/* ── Shared topbar ── */
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:14px;border-bottom:0.5px solid #2a2a2a;margin-bottom:16px;gap:8px;flex-wrap:wrap;}
 .topbar-title{font-size:18px;font-weight:500;color:#fff;}
 .topbar-sub{font-size:12px;color:#888;margin-top:3px;}
 .mode-btns{display:flex;gap:6px;flex-shrink:0;}
-.mode-btn{font-size:12px;padding:6px 14px;border-radius:8px;border:1px solid #444;background:#2a2a2a;color:#aaa;cursor:pointer;}
+.mode-btn{font-size:12px;padding:6px 14px;border-radius:8px;border:1px solid #444;background:#2a2a2a;color:#aaa;cursor:pointer;transition:all .15s;}
 .mode-btn.active{background:#fff;color:#111;border-color:#fff;font-weight:500;}
+
+/* ── PAGE 1: Dashboard ── */
 .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;}
-@media(max-width:500px){.metrics{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.metrics{grid-template-columns:repeat(2,1fr);}}
 .metric{background:#242424;border-radius:10px;padding:12px;}
 .metric-label{font-size:11px;color:#888;margin-bottom:4px;}
 .metric-value{font-size:24px;font-weight:500;}
 .metric-sub{font-size:10px;color:#555;margin-top:2px;}
 .sec-label{font-size:11px;font-weight:500;color:#666;text-transform:uppercase;letter-spacing:.07em;margin:0 0 10px;}
 .partners-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px;}
-@media(max-width:520px){.partners-grid{grid-template-columns:1fr;}}
-.pcard{background:#242424;border:1px solid #333;border-radius:12px;padding:14px;}
+@media(max-width:560px){.partners-grid{grid-template-columns:1fr;}}
+.pcard{background:#242424;border:1px solid #2e2e2e;border-radius:12px;padding:14px;}
 .pcard-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:8px;}
 .pname{font-size:14px;font-weight:500;color:#fff;}
-.pname-input{font-size:14px;font-weight:500;color:#fff;background:transparent;border:none;border-bottom:1px solid #555;outline:none;width:130px;}
+.pname-input{font-size:14px;font-weight:500;color:#fff;background:#1a1a1a;border:1px solid #444;border-radius:6px;outline:none;padding:3px 8px;width:140px;}
 .status-sel{font-size:11px;padding:3px 6px;border-radius:6px;border:1px solid #444;background:#1a1a1a;color:#ccc;cursor:pointer;}
 .status-badge{font-size:11px;padding:3px 9px;border-radius:6px;font-weight:500;}
 .sb-strong{background:#0f3d1f;color:#4ade80;}
@@ -33,11 +76,11 @@
 .prog-label-text{font-size:12px;color:#ddd;flex:1;}
 .prog-label-input{font-size:12px;color:#ddd;background:#1a1a1a;border:1px solid #444;border-radius:6px;outline:none;padding:3px 6px;flex:1;min-width:0;}
 .prog-actions{display:flex;align-items:center;gap:4px;flex-shrink:0;}
-.del-btn{background:#2a2a2a;border:1px solid #444;color:#888;border-radius:5px;padding:2px 6px;cursor:pointer;font-size:11px;line-height:1.4;}
-.prog-pct{font-size:12px;color:#aaa;min-width:30px;text-align:right;}
+.del-btn{background:#2a2a2a;border:1px solid #444;color:#888;border-radius:5px;padding:2px 7px;cursor:pointer;font-size:11px;}
+.prog-pct{font-size:12px;color:#aaa;min-width:32px;text-align:right;}
 .bar-bg{height:4px;background:#333;border-radius:99px;overflow:hidden;margin-bottom:4px;}
 .bar-fill{height:4px;border-radius:99px;transition:width .2s;}
-.prog-slider{width:100%;accent-color:#4ade80;margin-bottom:6px;}
+.prog-slider{width:100%;accent-color:#4ade80;margin-bottom:6px;cursor:pointer;}
 .tag-row{display:flex;flex-wrap:wrap;gap:4px;}
 .tag{font-size:11px;padding:2px 7px;border-radius:5px;}
 .t-deployed{background:#0f3d1f;color:#4ade80;}
@@ -51,74 +94,263 @@
 .insight{font-size:11px;color:#666;border-top:0.5px solid #333;padding-top:8px;margin-top:8px;font-style:italic;line-height:1.5;}
 .insight-input{font-size:11px;color:#888;background:transparent;border:none;border-bottom:1px solid #444;outline:none;width:100%;font-style:italic;}
 .chart-row{display:grid;grid-template-columns:1.3fr 1fr;gap:10px;margin-bottom:16px;}
-@media(max-width:520px){.chart-row{grid-template-columns:1fr;}}
-.chart-card{background:#242424;border:1px solid #333;border-radius:12px;padding:14px;}
-.snap-wrap{background:#242424;border:1px solid #333;border-radius:12px;padding:4px;margin-bottom:16px;overflow-x:auto;}
+@media(max-width:560px){.chart-row{grid-template-columns:1fr;}}
+.chart-card{background:#242424;border:1px solid #2e2e2e;border-radius:12px;padding:14px;}
+.snap-wrap{background:#242424;border:1px solid #2e2e2e;border-radius:12px;padding:4px;margin-bottom:16px;overflow-x:auto;}
 .snap-table{width:100%;font-size:12px;border-collapse:collapse;min-width:340px;}
 .snap-table th{text-align:left;font-weight:500;color:#666;font-size:11px;padding:6px 10px;border-bottom:0.5px solid #333;}
 .snap-table td{padding:7px 10px;border-bottom:0.5px solid #2a2a2a;color:#ccc;vertical-align:top;}
 .snap-table tr:last-child td{border-bottom:none;}
 .snap-input{font-size:12px;color:#ccc;background:transparent;border:none;border-bottom:1px solid #444;outline:none;width:100%;}
 .risks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:16px;}
-@media(max-width:520px){.risks-grid{grid-template-columns:1fr;}}
-.risk-item{background:#242424;border:1px solid #333;border-left:3px solid;border-radius:0;padding:10px 12px;}
+@media(max-width:560px){.risks-grid{grid-template-columns:1fr;}}
+.risk-item{background:#242424;border:1px solid #2e2e2e;border-left:3px solid;padding:10px 12px;}
 .risk-text{font-size:12px;color:#ccc;line-height:1.5;}
 .risk-input{font-size:12px;color:#ccc;background:transparent;border:none;border-bottom:1px solid #444;outline:none;width:100%;line-height:1.5;}
-.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
-@media(max-width:520px){.ach-grid{grid-template-columns:1fr;}}
+.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding-bottom:1rem;}
+@media(max-width:560px){.ach-grid{grid-template-columns:1fr;}}
 .ach-item{background:#242424;border-radius:10px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px;}
 .ach-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;margin-top:5px;flex-shrink:0;}
 .ach-text{font-size:12px;color:#ccc;line-height:1.5;}
 .ach-input{font-size:12px;color:#ccc;background:transparent;border:none;border-bottom:1px solid #444;outline:none;width:100%;line-height:1.5;}
+
+/* ── PAGE 2: SMT Calendar ── */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+@media(max-width:560px){.kpis{grid-template-columns:repeat(2,1fr);}}
+.kpi{background:#242424;border:1px solid #2e2e2e;border-radius:10px;padding:14px;}
+.kpi-n{font-size:26px;font-weight:500;color:#a78bfa;margin-bottom:2px;}
+.kpi-l{font-size:11px;color:#666;}
+.cal-wrap{background:#242424;border:1px solid #2e2e2e;border-radius:12px;overflow:hidden;margin-bottom:12px;}
+.cal-table{width:100%;border-collapse:collapse;}
+.cal-table thead th{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:#555;text-align:left;padding:8px 14px;border-bottom:0.5px solid #2e2e2e;background:#1e1e1e;}
+.cal-table thead th.num{text-align:right;width:52px;}
+.cal-table tbody tr{border-bottom:0.5px solid #252525;}
+.cal-table tbody tr:last-child{border-bottom:none;}
+.cal-table tbody tr:hover{background:#272727;}
+.month-cell{padding:14px;vertical-align:top;white-space:nowrap;border-right:0.5px solid #252525;}
+.month-name{font-size:14px;font-weight:500;color:#fff;}
+.month-yr{font-size:10px;color:#555;margin-top:2px;}
+.courses-cell{padding:10px 14px;vertical-align:top;}
+.pill-wrap{display:flex;flex-wrap:wrap;gap:5px;padding:3px 0;}
+.cpill{font-size:11px;padding:3px 10px;border-radius:20px;background:#26215C;color:#CECBF6;border:0.5px solid #3C3489;line-height:1.5;}
+.cdot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#7F77DD;margin-right:5px;vertical-align:middle;position:relative;top:-1px;}
+.count-cell{padding:14px;text-align:right;vertical-align:top;font-size:13px;font-weight:500;color:#555;}
+.cal-foot td{padding:10px 14px;border-top:1px solid #333;}
+.cal-foot .tot-label{font-size:12px;font-weight:500;color:#666;}
+.cal-foot .tot-n{text-align:right;font-size:14px;font-weight:500;color:#a78bfa;}
 </style>
+</head>
+<body>
+<div class="shell">
 
-<div class="app" id="app">
-<div class="topbar">
-  <div>
-    <div class="topbar-title">Content development summary</div>
-    <div class="topbar-sub">Academic year 2025–2026 · Updated <span id="upd-date"></span></div>
+<!-- ── Sidebar ── -->
+<nav class="sidebar" aria-label="Report navigation">
+  <div class="sidebar-logo">
+    <div class="logo-label">Content Development</div>
+    <div class="logo-title">Reports 2025–2026</div>
   </div>
-  <!-- <div class="mode-btns">
-    <button class="mode-btn active" id="btn-view" onclick="setMode('view')">View</button>
-    <button class="mode-btn" id="btn-edit" onclick="setMode('edit')">Edit</button>
-  </div> -->
-</div>
+  <div class="nav-links">
+    <div class="nav-section-label">Reports</div>
+    <button class="nav-item active" id="nav-dashboard" onclick="showPage('dashboard')">
+      <span class="nav-icon">▦</span>Programme dashboard
+    </button>
+    <button class="nav-item" id="nav-calendar" onclick="showPage('calendar')">
+      <span class="nav-icon">☰</span>SMT course calendar
+    </button>
+    <div class="nav-divider"></div>
+    <div class="nav-section-label">Quick facts</div>
+    <button class="nav-item" style="cursor:default;opacity:.6;">
+      <span class="nav-icon" style="background:#0f3d1f;">✓</span>30 courses created
+    </button>
+    <button class="nav-item" style="cursor:default;opacity:.6;">
+      <span class="nav-icon" style="background:#3d2600;">!</span>4 programmes on hold
+    </button>
+  </div>
+  <div class="sidebar-footer">
+    Academic year 2025–2026<br>
+    Updated <span id="footer-date"></span>
+  </div>
+</nav>
 
-<div class="metrics" id="metrics-row"></div>
-<div class="sec-label">Partner progress</div>
-<div class="partners-grid" id="partners-container"></div>
+<!-- ── Main content ── -->
+<main class="main">
 
-<div class="chart-row">
-  <div class="chart-card">
-    <div class="sec-label" style="margin-bottom:8px;">CPD courses – completion</div>
-    <div style="position:relative;width:100%;height:190px;">
-      <canvas id="cpdChart" role="img" aria-label="CPD course completion chart">CPD completion.</canvas>
+  <!-- PAGE 1: Programme Dashboard -->
+  <div class="page active" id="page-dashboard">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">Programme dashboard</div>
+        <div class="topbar-sub">Academic year 2025–2026 · Updated <span id="upd-date"></span></div>
+      </div>
+     <!-- <div class="mode-btns">
+        <button class="mode-btn active" id="btn-view" onclick="setMode('view')">View</button>
+        <button class="mode-btn" id="btn-edit" onclick="setMode('edit')">Edit</button>
+      </div> -->
+    </div>
+
+    <div class="metrics" id="metrics-row"></div>
+    <div class="sec-label">Partner progress</div>
+    <div class="partners-grid" id="partners-container"></div>
+
+    <div class="chart-row">
+      <div class="chart-card">
+        <div class="sec-label" style="margin-bottom:8px;">CPD courses – completion</div>
+        <div style="position:relative;width:100%;height:190px;">
+          <canvas id="cpdChart" role="img" aria-label="CPD course completion horizontal bar chart">CPD completion.</canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="sec-label" style="margin-bottom:8px;">Status breakdown</div>
+        <div style="position:relative;width:100%;height:140px;">
+          <canvas id="statusChart" role="img" aria-label="Overall status donut chart">Status breakdown.</canvas>
+        </div>
+        <div id="donut-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;"></div>
+      </div>
+    </div>
+
+    <div class="sec-label">Progress snapshot</div>
+    <div class="snap-wrap">
+      <table class="snap-table">
+        <thead><tr><th style="width:28%;">Category</th><th style="width:50%;">Programmes</th><th style="width:22%;">Status</th></tr></thead>
+        <tbody id="snap-body"></tbody>
+      </table>
+    </div>
+
+    <div class="sec-label">Key risks</div>
+    <div class="risks-grid" id="risks-container"></div>
+
+    <div class="sec-label" style="margin-top:14px;">Key achievements</div>
+    <div class="ach-grid" id="ach-container"></div>
+  </div>
+
+  <!-- PAGE 2: SMT Calendar -->
+  <div class="page" id="page-calendar">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">SMT course calendar</div>
+        <div class="topbar-sub">Courses created · September 2025 – April 2026</div>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-n">30</div><div class="kpi-l">Courses created to date</div></div>
+      <div class="kpi"><div class="kpi-n">8</div><div class="kpi-l">Months of delivery</div></div>
+      <div class="kpi"><div class="kpi-n">3.75</div><div class="kpi-l">Avg. courses per month</div></div>
+    </div>
+
+    <div class="sec-label">Month-by-month breakdown</div>
+    <div class="cal-wrap">
+      <table class="cal-table" role="table" aria-label="Courses created by month, September 2025 to April 2026">
+        <thead>
+          <tr>
+            <th style="width:130px;">Month</th>
+            <th>Courses created</th>
+            <th class="num">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="month-cell"><div class="month-name">September</div><div class="month-yr">2025</div></td>
+            <td class="courses-cell"><div class="pill-wrap">
+              <span class="cpill"><span class="cdot"></span>17 SDGs</span>
+            </div></td>
+            <td class="count-cell">1</td>
+          </tr>
+          <tr>
+            <td class="month-cell"><div class="month-name">October</div><div class="month-yr">2025</div></td>
+            <td class="courses-cell"><div class="pill-wrap">
+              <span class="cpill"><span class="cdot"></span>Returning to STEM</span>
+              <span class="cpill"><span class="cdot"></span>Data analysis: Visualisations in Excel</span>
+              <span class="cpill"><span class="cdot"></span>Data Analysis: Hypothesis Testing</span>
+              <span class="cpill"><span class="cdot"></span>Hybrid Working: Digital Communication &amp; Collaboration</span>
+              <span class="cpill"><span class="cdot"></span>Getting Started with SPSS</span>
+              <span class="cpill"><span class="cdot"></span>Supporting Children's Development: Special Needs</span>
+              <span class="cpill"><span class="cdot"></span>Exploring Learning Disabilities: Supporting Belonging</span>
+            </div></td>
+            <td class="count-cell">7</td>
+          </tr>
+          <tr>
+            <td class="month-cell"><div class="month-name">November</div><div class="month-yr">2025</div></td>
+            <td class="courses-cell"><div class="pill-wrap">
+              <span class="cpill"><span class="cdot"></span>Entrepreneurship – from ideas to reality (CPD)</span>
+              <span class="cpill"><span class="cdot"></span>Succeed in the workplace (CPD)</span>
+              <span class="cpill"><span class="cdot"></span>Cybersecurity (CPD)</span>
+            </div></td>
+            <td class="count-cell">3</td>
+          </tr>
+          <tr>
+            <td class="month-cell"><div class="month-name">December</div><div class="month-yr">2025</div></td>
+            <td class="courses-cell"><div class="pill-wrap">
+              <span class="cpill"><span class="cdot"></span>Digital thinking tools for better decision making (CPD)</span>
+              <span class="cpill"><span class="cdot"></span>Personal branding for career success</span>
+              <span class="cpill"><span class="cdot"></span>Learning from major cyber security incidents</span>
+            </div></td>
+            <td class="count-cell">3</td>
+          </tr>
+          <tr>
+            <td class="month-cell"><div class="month-name">January</div><div class="month-yr">2026</div></td>
+            <td class="courses-cell"><div class="pill-wrap">
+              <span class="cpill"><span class="cdot"></span>Developing career resilience</span>
+              <span class="cpill"><span class="cdot"></span>Understanding your sector</span>
+              <span class="cpill"><span class="cdot"></span>Talk the talk</span>
+              <span class="cpill"><span class="cdot"></span>Digital Marketing (CPD)</span>
+            </div></td>
+            <td class="count-cell">4</td>
+          </tr>
+          <tr>
+            <td class="month-cell"><div class="month-name">February</div><div class="month-yr">2026</div></td>
+            <td class="courses-cell"><div class="pill-wrap">
+              <span class="cpill"><span class="cdot"></span>Effective communication in the workplace</span>
+              <span class="cpill"><span class="cdot"></span>Hybrid working: Skills for digital transformation</span>
+              <span class="cpill"><span class="cdot"></span>Network security</span>
+            </div></td>
+            <td class="count-cell">3</td>
+          </tr>
+          <tr>
+            <td class="month-cell"><div class="month-name">March</div><div class="month-yr">2026</div></td>
+            <td class="courses-cell"><div class="pill-wrap">
+              <span class="cpill"><span class="cdot"></span>Supply chain sustainability</span>
+              <span class="cpill"><span class="cdot"></span>Effective communication in the workplace</span>
+              <span class="cpill"><span class="cdot"></span>Risk management</span>
+            </div></td>
+            <td class="count-cell">3</td>
+          </tr>
+          <tr>
+            <td class="month-cell"><div class="month-name">April</div><div class="month-yr">2026</div></td>
+            <td class="courses-cell"><div class="pill-wrap">
+              <span class="cpill"><span class="cdot"></span>Environmental management and organisations</span>
+              <span class="cpill"><span class="cdot"></span>EAP UG</span>
+              <span class="cpill"><span class="cdot"></span>EAP PG</span>
+            </div></td>
+            <td class="count-cell">3</td>
+          </tr>
+        </tbody>
+        <tfoot class="cal-foot">
+          <tr>
+            <td class="tot-label">Total</td>
+            <td></td>
+            <td class="tot-n">30</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   </div>
-  <div class="chart-card">
-    <div class="sec-label" style="margin-bottom:8px;">Status breakdown</div>
-    <div style="position:relative;width:100%;height:140px;">
-      <canvas id="statusChart" role="img" aria-label="Status donut chart">Status breakdown.</canvas>
-    </div>
-    <div id="donut-legend" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;"></div>
-  </div>
-</div>
 
-<div class="sec-label">Progress snapshot</div>
-<div class="snap-wrap"><table class="snap-table">
-  <thead><tr><th style="width:28%;">Category</th><th style="width:50%;">Programmes</th><th style="width:22%;">Status</th></tr></thead>
-  <tbody id="snap-body"></tbody>
-</table></div>
-
-<div class="sec-label">Key risks</div>
-<div class="risks-grid" id="risks-container"></div>
-
-<div class="sec-label" style="margin-top:14px;">Key achievements</div>
-<div class="ach-grid" id="ach-container"></div>
+</main>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
+/* ── Navigation ── */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.getElementById('nav-' + id).classList.add('active');
+  if (id === 'dashboard') renderCharts();
+}
+
+/* ── Dashboard logic ── */
 const TAG_OPTIONS=['deployed','hold','qa','progress','risk','launch'];
 const TAG_LABEL={deployed:'Deployed',hold:'On hold',qa:'In QA',progress:'In progress',risk:'At risk',launch:'Ready to launch'};
 const TAG_CLASS={deployed:'t-deployed',hold:'t-hold',qa:'t-qa',progress:'t-progress',risk:'t-risk',launch:'t-launch'};
@@ -127,7 +359,7 @@ const STATUS_OPTIONS=['Strong','Mixed','In transition','Early stage','Completed'
 const STATUS_CLASS={'Strong':'sb-strong','Mixed':'sb-mixed','In transition':'sb-transition','Early stage':'sb-early','Completed':'sb-strong','On hold':'sb-mixed','At risk':'sb-mixed'};
 
 let mode='view';
-let cpdInst=null, donutInst=null;
+let cpdInst=null,donutInst=null;
 
 let data={
   partners:[
@@ -214,32 +446,18 @@ function renderPartners(){
     const div=document.createElement('div');
     div.className='pcard';
     const sc=STATUS_CLASS[p.status]||'sb-default';
-    const nameHtml=mode==='edit'
-      ?`<input class="pname-input" value="${p.name}" oninput="data.partners[${pi}].name=this.value">`
-      :`<div class="pname">${p.name}</div>`;
-    const statusHtml=mode==='edit'
-      ?`<select class="status-sel" onchange="data.partners[${pi}].status=this.value;renderPartners();">${STATUS_OPTIONS.map(s=>`<option value="${s}"${s===p.status?' selected':''}>${s}</option>`).join('')}</select>`
-      :`<div class="status-badge ${sc}">${p.status}</div>`;
+    const nameHtml=mode==='edit'?`<input class="pname-input" value="${p.name}" oninput="data.partners[${pi}].name=this.value">`:`<div class="pname">${p.name}</div>`;
+    const statusHtml=mode==='edit'?`<select class="status-sel" onchange="data.partners[${pi}].status=this.value;renderPartners();">${STATUS_OPTIONS.map(s=>`<option value="${s}"${s===p.status?' selected':''}>${s}</option>`).join('')}</select>`:`<div class="status-badge ${sc}">${p.status}</div>`;
     const progsHtml=p.progs.map((pr,pri)=>{
       const bc=BAR_COLORS[pr.tags[0]]||'#888';
-      const labelHtml=mode==='edit'
-        ?`<input class="prog-label-input" value="${pr.name}" oninput="data.partners[${pi}].progs[${pri}].name=this.value">`
-        :`<span class="prog-label-text">${pr.name}</span>`;
+      const labelHtml=mode==='edit'?`<input class="prog-label-input" value="${pr.name}" oninput="data.partners[${pi}].progs[${pri}].name=this.value">`:`<span class="prog-label-text">${pr.name}</span>`;
       const delHtml=mode==='edit'?`<button class="del-btn" onclick="deleteProg(${pi},${pri})">✕</button>`:'';
       const sliderHtml=mode==='edit'?`<input type="range" min="0" max="100" step="1" value="${pr.pct}" class="prog-slider" oninput="updateProgPct(${pi},${pri},this.value)">`:'' ;
-      const tagsHtml=mode==='edit'
-        ?pr.tags.map((t,ti)=>`<select class="tag-sel" onchange="data.partners[${pi}].progs[${pri}].tags[${ti}]=this.value;render();">${TAG_OPTIONS.map(o=>`<option value="${o}"${o===t?' selected':''}>${TAG_LABEL[o]}</option>`).join('')}</select>`).join('')
-        :pr.tags.map(t=>`<span class="tag ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
-      return `<div class="prog-row">
-        <div class="prog-top">${labelHtml}<div class="prog-actions">${delHtml}<span class="prog-pct">${pr.pct}%</span></div></div>
-        <div class="bar-bg"><div class="bar-fill" style="width:${pr.pct}%;background:${bc};"></div></div>
-        ${sliderHtml}<div class="tag-row">${tagsHtml}</div>
-      </div>`;
+      const tagsHtml=mode==='edit'?pr.tags.map((t,ti)=>`<select class="tag-sel" onchange="data.partners[${pi}].progs[${pri}].tags[${ti}]=this.value;render();">${TAG_OPTIONS.map(o=>`<option value="${o}"${o===t?' selected':''}>${TAG_LABEL[o]}</option>`).join('')}</select>`).join(''):pr.tags.map(t=>`<span class="tag ${TAG_CLASS[t]||''}">${TAG_LABEL[t]||t}</span>`).join('');
+      return `<div class="prog-row"><div class="prog-top">${labelHtml}<div class="prog-actions">${delHtml}<span class="prog-pct">${pr.pct}%</span></div></div><div class="bar-bg"><div class="bar-fill" style="width:${pr.pct}%;background:${bc};"></div></div>${sliderHtml}<div class="tag-row">${tagsHtml}</div></div>`;
     }).join('');
     const addBtn=mode==='edit'?`<button class="add-btn" onclick="addProg(${pi})">+ add programme</button>`:'';
-    const insightHtml=mode==='edit'
-      ?`<div class="insight"><input class="insight-input" value="${p.insight}" oninput="data.partners[${pi}].insight=this.value"></div>`
-      :`<div class="insight">${p.insight}</div>`;
+    const insightHtml=mode==='edit'?`<div class="insight"><input class="insight-input" value="${p.insight}" oninput="data.partners[${pi}].insight=this.value"></div>`:`<div class="insight">${p.insight}</div>`;
     div.innerHTML=`<div class="pcard-header">${nameHtml}${statusHtml}</div>${progsHtml}${addBtn}${insightHtml}`;
     c.appendChild(div);
   });
@@ -253,74 +471,51 @@ function renderCharts(){
   cpdInst=new Chart(document.getElementById('cpdChart'),{
     type:'bar',
     data:{labels:cpdLabels,datasets:[{data:cpdVals,backgroundColor:cpdColors,borderRadius:4,borderSkipped:false}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+Math.round(ctx.parsed.x)+'%'}}},
-      scales:{
-        x:{min:0,max:100,ticks:{color:'#666',font:{size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.05)'}},
-        y:{ticks:{color:'#aaa',font:{size:10}}}
-      }}
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+Math.round(ctx.parsed.x)+'%'}}},scales:{x:{min:0,max:100,ticks:{color:'#666',font:{size:10},callback:v=>v+'%'},grid:{color:'rgba(255,255,255,0.05)'}},y:{ticks:{color:'#aaa',font:{size:10}}}}}
   });
   const m=computeMetrics();
   const dData=[m.deployed,m.prelaunch,m.inprog,m.onhold];
-  const dLabels=['Deployed','Pre-launch','In progress','On hold'];
   const dColors=['#4ade80','#60a5fa','#a78bfa','#f59e0b'];
   if(donutInst)donutInst.destroy();
   donutInst=new Chart(document.getElementById('statusChart'),{
     type:'doughnut',
-    data:{labels:dLabels,datasets:[{data:dData,backgroundColor:dColors,borderWidth:0,hoverOffset:4}]},
+    data:{labels:['Deployed','Pre-launch','In progress','On hold'],datasets:[{data:dData,backgroundColor:dColors,borderWidth:0,hoverOffset:4}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{display:false}}}
   });
-  document.getElementById('donut-legend').innerHTML=dLabels.map((l,i)=>
-    `<span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#888;"><span style="width:8px;height:8px;border-radius:2px;background:${dColors[i]};display:inline-block;"></span>${l} (${dData[i]})</span>`
-  ).join('');
+  document.getElementById('donut-legend').innerHTML=['Deployed','Pre-launch','In progress','On hold'].map((l,i)=>`<span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#888;"><span style="width:8px;height:8px;border-radius:2px;background:${dColors[i]};display:inline-block;"></span>${l} (${dData[i]})</span>`).join('');
 }
 
 function renderSnapshot(){
   document.getElementById('snap-body').innerHTML=data.snapshot.map((s,si)=>{
     const tag=`<span class="tag ${TAG_CLASS[s.status]||''}">${TAG_LABEL[s.status]||s.status}</span>`;
-    if(mode==='edit')return`<tr>
-      <td><input class="snap-input" style="font-size:11px;color:#888;" value="${s.cat}" oninput="data.snapshot[${si}].cat=this.value"></td>
-      <td><input class="snap-input" value="${s.progs}" oninput="data.snapshot[${si}].progs=this.value"></td>
-      <td><select class="tag-sel" onchange="data.snapshot[${si}].status=this.value;renderSnapshot();">${TAG_OPTIONS.map(o=>`<option value="${o}"${o===s.status?' selected':''}>${TAG_LABEL[o]}</option>`).join('')}</select></td>
-    </tr>`;
+    if(mode==='edit')return`<tr><td><input class="snap-input" style="font-size:11px;color:#888;" value="${s.cat}" oninput="data.snapshot[${si}].cat=this.value"></td><td><input class="snap-input" value="${s.progs}" oninput="data.snapshot[${si}].progs=this.value"></td><td><select class="tag-sel" onchange="data.snapshot[${si}].status=this.value;renderSnapshot();">${TAG_OPTIONS.map(o=>`<option value="${o}"${o===s.status?' selected':''}>${TAG_LABEL[o]}</option>`).join('')}</select></td></tr>`;
     return`<tr><td style="color:#666;font-size:11px;">${s.cat}</td><td>${s.progs}</td><td>${tag}</td></tr>`;
   }).join('');
 }
 
 function renderRisks(){
   document.getElementById('risks-container').innerHTML=data.risks.map((r,ri)=>{
-    const content=mode==='edit'
-      ?`<input class="risk-input" value="${r.text}" oninput="data.risks[${ri}].text=this.value">`
-      :`<div class="risk-text">${r.text}</div>`;
+    const content=mode==='edit'?`<input class="risk-input" value="${r.text}" oninput="data.risks[${ri}].text=this.value">`:`<div class="risk-text">${r.text}</div>`;
     return`<div class="risk-item" style="border-left-color:${r.color};">${content}</div>`;
   }).join('');
 }
 
 function renderAchievements(){
   document.getElementById('ach-container').innerHTML=data.achievements.map((a,ai)=>{
-    const content=mode==='edit'
-      ?`<input class="ach-input" value="${a.text}" oninput="data.achievements[${ai}].text=this.value">`
-      :`<div class="ach-text">${a.text}</div>`;
+    const content=mode==='edit'?`<input class="ach-input" value="${a.text}" oninput="data.achievements[${ai}].text=this.value">`:`<div class="ach-text">${a.text}</div>`;
     return`<div class="ach-item"><div class="ach-dot"></div>${content}</div>`;
   }).join('');
 }
 
-function render(){
-  renderMetrics();
-  renderPartners();
-  renderCharts();
-  renderSnapshot();
-  renderRisks();
-  renderAchievements();
-}
-
-function updateProgPct(pi,pri,val){
-  data.partners[pi].progs[pri].pct=parseInt(val);
-  renderMetrics();renderPartners();renderCharts();
-}
+function render(){renderMetrics();renderPartners();renderCharts();renderSnapshot();renderRisks();renderAchievements();}
+function updateProgPct(pi,pri,val){data.partners[pi].progs[pri].pct=parseInt(val);renderMetrics();renderPartners();renderCharts();}
 function deleteProg(pi,pri){data.partners[pi].progs.splice(pri,1);render();}
 function addProg(pi){data.partners[pi].progs.push({id:Date.now(),name:'New programme',pct:0,tags:['progress']});render();}
 
-document.getElementById('upd-date').textContent=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+const today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+document.getElementById('upd-date').textContent=today;
+document.getElementById('footer-date').textContent=today;
 render();
 </script>
+</body>
+</html>
