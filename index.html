@@ -173,10 +173,110 @@ body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
 .active-bar{height:5px;border-radius:99px;}
 .grad-section{background:#242424;border:1px solid #2e2e2e;border-radius:12px;padding:16px;margin-bottom:20px;}
 .grad-note{font-size:11px;color:#555;font-style:italic;margin-top:10px;line-height:1.5;}
+
+/* ── PAGE 4: NPS ── */
+.nps-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px;}
+@media(max-width:600px){.nps-kpis{grid-template-columns:repeat(2,1fr);}}
+.nkpi{background:#242424;border:1px solid #2e2e2e;border-radius:10px;padding:14px;}
+.nkpi-n{font-size:26px;font-weight:600;margin-bottom:2px;}
+.nkpi-l{font-size:11px;color:#666;}
+.nkpi-sub{font-size:10px;color:#444;margin-top:2px;}
+.nps-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.nps-tab{font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid #333;background:#242424;color:#888;cursor:pointer;transition:all .15s;}
+.nps-tab.active{background:#7030A0;border-color:#7030A0;color:#fff;font-weight:500;}
+.nps-section{display:none;}
+.nps-section.active{display:block;}
+.nps-partner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px;}
+@media(max-width:640px){.nps-partner-grid{grid-template-columns:1fr;}}
+.nps-card{background:#242424;border:1px solid #2e2e2e;border-radius:12px;overflow:hidden;}
+.nps-card-header{padding:12px 16px;border-bottom:0.5px solid #2e2e2e;display:flex;justify-content:space-between;align-items:center;}
+.nps-card-title{font-size:13px;font-weight:500;color:#fff;}
+.nps-avg-badge{font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px;}
+.badge-green{background:#0f3d1f;color:#4ade80;}
+.badge-yellow{background:#3d2600;color:#f59e0b;}
+.badge-blue{background:#0c2a4a;color:#60a5fa;}
+.nps-card-body{padding:12px 16px;}
+.nps-q-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid #1e1e1e;}
+.nps-q-row:last-child{border-bottom:none;}
+.nps-q-label{font-size:11px;color:#888;flex:1;padding-right:8px;line-height:1.4;}
+.nps-q-scores{display:flex;gap:6px;flex-shrink:0;align-items:center;}
+.score-chip{font-size:11px;padding:2px 7px;border-radius:4px;font-weight:500;min-width:34px;text-align:center;}
+.score-hi{background:#0f3d1f;color:#4ade80;}
+.score-mid{background:#3d2c00;color:#f59e0b;}
+.score-lo{background:#3d0f0f;color:#f87171;}
+.nps-chart-card{background:#242424;border:1px solid #2e2e2e;border-radius:12px;padding:16px;margin-bottom:20px;}
+.nps-table-wrap{background:#242424;border:1px solid #2e2e2e;border-radius:12px;overflow-x:auto;margin-bottom:20px;}
+.nps-table{width:100%;border-collapse:collapse;min-width:480px;}
+.nps-table th{font-size:10px;font-weight:500;color:#555;text-transform:uppercase;letter-spacing:.06em;padding:8px 12px;border-bottom:0.5px solid #2e2e2e;background:#1e1e1e;text-align:center;}
+.nps-table th:first-child{text-align:left;}
+.nps-table td{padding:9px 12px;border-bottom:0.5px solid #222;font-size:12px;color:#ccc;text-align:center;}
+.nps-table td:first-child{text-align:left;color:#fff;font-weight:500;}
+.nps-table tr:last-child td{border-bottom:none;}
+.nps-table tr:hover td{background:#272727;}
+.trend-up{color:#4ade80;font-size:10px;}
+.trend-dn{color:#f87171;font-size:10px;}
+.trend-neu{color:#666;font-size:10px;}
 .note-box{background:#1e1e1e;border:0.5px solid #2e2e2e;border-left:3px solid #f59e0b;border-radius:0;padding:10px 14px;margin-top:16px;}
 .note-box p{font-size:12px;color:#aaa;line-height:1.6;margin-bottom:4px;}
 .note-box p:last-child{margin-bottom:0;}
 .note-label{font-size:10px;color:#f59e0b;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;font-weight:500;}
+
+/* ── PDF Export ── */
+.export-bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 14px;background:#1e1e1e;border:0.5px solid #2e2e2e;border-radius:10px;margin-bottom:16px;}
+.export-label{font-size:11px;color:#555;text-transform:uppercase;letter-spacing:.07em;margin-right:4px;flex-shrink:0;}
+.export-btn{display:flex;align-items:center;gap:6px;font-size:12px;padding:6px 14px;border-radius:8px;border:1px solid #333;background:#242424;color:#aaa;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.export-btn:hover{border-color:#7030A0;color:#c084fc;background:#26175a;}
+.export-btn svg{width:13px;height:13px;flex-shrink:0;}
+.export-btn.primary{background:#7030A0;border-color:#7030A0;color:#fff;}
+.export-btn.primary:hover{background:#8040b0;border-color:#8040b0;}
+.pdf-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:center;justify-content:center;}
+.pdf-overlay.show{display:flex;}
+.pdf-modal{background:#1e1e1e;border:1px solid #333;border-radius:14px;padding:24px;width:340px;max-width:90vw;}
+.pdf-modal-title{font-size:15px;font-weight:500;color:#fff;margin-bottom:6px;}
+.pdf-modal-sub{font-size:12px;color:#666;margin-bottom:18px;line-height:1.5;}
+.pdf-option{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #2e2e2e;border-radius:8px;margin-bottom:8px;cursor:pointer;transition:all .15s;}
+.pdf-option:hover{border-color:#7030A0;background:#26175a20;}
+.pdf-option input[type=checkbox]{accent-color:#7030A0;width:14px;height:14px;flex-shrink:0;}
+.pdf-option-label{font-size:13px;color:#ccc;}
+.pdf-option-sub{font-size:11px;color:#555;margin-top:1px;}
+.pdf-modal-actions{display:flex;gap:8px;margin-top:16px;}
+.pdf-modal-actions .export-btn{flex:1;justify-content:center;}
+.pdf-spinner{display:none;font-size:12px;color:#888;margin-top:10px;text-align:center;}
+@media print{
+  .sidebar,.export-bar,.pdf-overlay{display:none!important;}
+  .main{margin-left:0!important;}
+  .page{display:block!important;padding:16px!important;}
+  body{background:#fff!important;color:#111!important;}
+  .topbar-title{color:#111!important;}
+  .topbar-sub{color:#555!important;}
+  .topbar{border-bottom-color:#ddd!important;}
+  .sec-label{color:#555!important;}
+  .metric,.pcard,.chart-card,.snap-wrap,.risk-item,.ach-item,.ekpi,.nkpi,.intake-card,.nps-chart-card,.nps-table-wrap,.nps-card,.cal-wrap,.grad-section,.kpi{background:#f8f8f8!important;border-color:#ddd!important;}
+  .pname,.metric-value,.ekpi-n,.nkpi-n,.intake-title,.nps-card-title,.prog-name-cell{color:#111!important;}
+  .metric-label,.sec-label,.insight,.prog-label-text,.intake-prog,.nps-q-label,.month-name{color:#555!important;}
+  .snap-table td,.nps-table td,.active-students-table td,.cal-table td{color:#333!important;border-bottom-color:#eee!important;}
+  .snap-table th,.nps-table th,.active-students-table th,.cal-table th{color:#777!important;background:#f0f0f0!important;border-bottom-color:#ddd!important;}
+  .t-deployed,.tag{background:#e8f5e9!important;color:#2e7d32!important;border:none!important;}
+  .t-hold{background:#fff3e0!important;color:#e65100!important;}
+  .t-progress{background:#ede7f6!important;color:#4527a0!important;}
+  .t-qa{background:#e3f2fd!important;color:#1565c0!important;}
+  .t-risk{background:#fce4ec!important;color:#c62828!important;}
+  .score-hi{background:#e8f5e9!important;color:#2e7d32!important;}
+  .score-mid{background:#fff3e0!important;color:#e65100!important;}
+  .score-lo{background:#fce4ec!important;color:#c62828!important;}
+  .sb-strong{background:#e8f5e9!important;color:#2e7d32!important;}
+  .sb-mixed{background:#fff3e0!important;color:#e65100!important;}
+  .sb-transition{background:#e3f2fd!important;color:#1565c0!important;}
+  .sb-early{background:#ede7f6!important;color:#4527a0!important;}
+  .bar-bg{background:#eee!important;}
+  .bdm-badge{background:#e3f2fd!important;color:#1565c0!important;}
+  .cro-badge{background:#e8f5e9!important;color:#2e7d32!important;}
+  .corp-badge{background:#ede7f6!important;color:#4527a0!important;}
+  .intake-total-badge{background:#e3f2fd!important;color:#1565c0!important;}
+  .nps-tab,.nps-tabs{display:none!important;}
+  .nps-section{display:block!important;}
+  .cpill{background:#ede7f6!important;color:#4527a0!important;border-color:#c5cae9!important;}
+}
 </style>
 </head>
 <body>
@@ -198,6 +298,9 @@ body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
     </button>
     <button class="nav-item" id="nav-enrolment" onclick="showPage('enrolment')">
       <span class="nav-icon">👥</span>Enrolment & progression
+    </button>
+    <button class="nav-item" id="nav-nps" onclick="showPage('nps')">
+      <span class="nav-icon">★</span>NPS scores
     </button>
     <div class="nav-divider"></div>
     <div class="nav-section-label">Quick facts</div>
@@ -227,7 +330,17 @@ body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
         <div class="topbar-title">Programme dashboard</div>
         <div class="topbar-sub">Academic year 2025–2026 · Updated <span id="upd-date"></span></div>
       </div>
-
+    </div>
+    <div class="export-bar">
+      <span class="export-label">Export</span>
+      <button class="export-btn primary" onclick="openExportModal()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M5 7l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
+        Download PDF
+      </button>
+      <button class="export-btn" onclick="printPage()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="10" height="7" rx="1"/><path d="M5 6V3h6v3M5 10h2M5 12h4"/></svg>
+        Print page
+      </button>
     </div>
 
     <div class="metrics" id="metrics-row"></div>
@@ -272,6 +385,17 @@ body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
         <div class="topbar-title">SMT course calendar</div>
         <div class="topbar-sub">Courses created · September 2025 – April 2026</div>
       </div>
+    </div>
+    <div class="export-bar">
+      <span class="export-label">Export</span>
+      <button class="export-btn primary" onclick="openExportModal()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M5 7l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
+        Download PDF
+      </button>
+      <button class="export-btn" onclick="printPage()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="10" height="7" rx="1"/><path d="M5 6V3h6v3M5 10h2M5 12h4"/></svg>
+        Print page
+      </button>
     </div>
 
     <div class="kpis">
@@ -385,6 +509,17 @@ body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
         <div class="topbar-title">Enrolment &amp; student progression</div>
         <div class="topbar-sub">Active students by intake · Graduation projections · Last updated 28 Apr 2026</div>
       </div>
+    </div>
+    <div class="export-bar">
+      <span class="export-label">Export</span>
+      <button class="export-btn primary" onclick="openExportModal()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M5 7l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
+        Download PDF
+      </button>
+      <button class="export-btn" onclick="printPage()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="10" height="7" rx="1"/><path d="M5 6V3h6v3M5 10h2M5 12h4"/></svg>
+        Print page
+      </button>
     </div>
 
     <!-- KPIs -->
@@ -652,6 +787,224 @@ body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
 
   </div><!-- /page-enrolment -->
 
+  <!-- PAGE 4: NPS Scores -->
+  <div class="page" id="page-nps">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">NPS Survey Analysis</div>
+        <div class="topbar-sub">Year to date · All partners · Ratings out of 10</div>
+      </div>
+    </div>
+    <div class="export-bar">
+      <span class="export-label">Export</span>
+      <button class="export-btn primary" onclick="openExportModal()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v8M5 7l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
+        Download PDF
+      </button>
+      <button class="export-btn" onclick="printPage()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="10" height="7" rx="1"/><path d="M5 6V3h6v3M5 10h2M5 12h4"/></svg>
+        Print page
+      </button>
+    </div>
+
+    <!-- KPIs -->
+    <div class="nps-kpis">
+      <div class="nkpi">
+        <div class="nkpi-n" style="color:#4ade80;">8.3</div>
+        <div class="nkpi-l">GBS Dubai avg (Mar 2026)</div>
+        <div class="nkpi-sub">↑ from 8.0 in Dec 2025</div>
+      </div>
+      <div class="nkpi">
+        <div class="nkpi-n" style="color:#a78bfa;">9.1</div>
+        <div class="nkpi-l">EP avg (Apr 2025)</div>
+        <div class="nkpi-sub">Highest student score</div>
+      </div>
+      <div class="nkpi">
+        <div class="nkpi-n" style="color:#60a5fa;">9.5</div>
+        <div class="nkpi-l">Instructor avg (Mar 2026)</div>
+        <div class="nkpi-sub">↑ consistently improving</div>
+      </div>
+      <div class="nkpi">
+        <div class="nkpi-n" style="color:#f59e0b;">9.5</div>
+        <div class="nkpi-l">Stakeholder avg (Mar 2026)</div>
+        <div class="nkpi-sub">Strong partner satisfaction</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="nps-tabs">
+      <button class="nps-tab active" onclick="showNpsTab('students')">Students</button>
+      <button class="nps-tab" onclick="showNpsTab('instructors')">Instructors</button>
+      <button class="nps-tab" onclick="showNpsTab('stakeholders')">Stakeholders</button>
+    </div>
+
+    <!-- ── STUDENTS TAB ── -->
+    <div class="nps-section active" id="nps-students">
+      <div class="sec-label" style="margin-bottom:12px;">Average scores by survey round</div>
+      <div class="nps-chart-card">
+        <div style="position:relative;width:100%;height:260px;">
+          <canvas id="npsStudentsChart" role="img" aria-label="Line chart of NPS average scores by student group over time">NPS students chart.</canvas>
+        </div>
+      </div>
+
+      <!-- GBS Dubai -->
+      <div class="sec-label" style="margin-bottom:10px;">GBS Dubai — students</div>
+      <div class="nps-table-wrap">
+        <table class="nps-table" role="table">
+          <thead><tr>
+            <th>Question</th>
+            <th>Jun 2024</th><th>Nov 2024</th><th>Apr 2025</th><th>Dec 2025</th><th>Mar 2026</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Course quality</td><td><span class="score-chip score-hi">8.7</span></td><td><span class="score-chip score-mid">7.4</span></td><td><span class="score-chip score-hi">8.8</span></td><td><span class="score-chip score-mid">7.9</span></td><td><span class="score-chip score-hi">8.4</span></td></tr>
+            <tr><td>Instructor quality</td><td><span class="score-chip score-hi">9.0</span></td><td><span class="score-chip score-mid">7.2</span></td><td><span class="score-chip score-hi">8.6</span></td><td><span class="score-chip score-mid">7.8</span></td><td><span class="score-chip score-hi">8.6</span></td></tr>
+            <tr><td>Platform usability</td><td><span class="score-chip score-hi">8.3</span></td><td><span class="score-chip score-mid">7.4</span></td><td><span class="score-chip score-hi">8.7</span></td><td><span class="score-chip score-hi">8.0</span></td><td><span class="score-chip score-hi">8.2</span></td></tr>
+            <tr><td>Technical support</td><td><span class="score-chip score-hi">9.3</span></td><td><span class="score-chip score-mid">7.6</span></td><td><span class="score-chip score-hi">9.1</span></td><td><span class="score-chip score-hi">8.2</span></td><td><span class="score-chip score-hi">8.3</span></td></tr>
+            <tr><td>Likely to recommend</td><td><span class="score-chip score-hi">9.5</span></td><td><span class="score-chip score-mid">7.3</span></td><td><span class="score-chip score-hi">8.8</span></td><td><span class="score-chip score-mid">7.8</span></td><td><span class="score-chip score-mid">7.9</span></td></tr>
+            <tr style="background:#1e1e1e;"><td style="color:#fff;font-weight:600;">Average</td><td style="color:#4ade80;font-weight:600;">9.0</td><td style="color:#f59e0b;font-weight:600;">7.4</td><td style="color:#4ade80;font-weight:600;">8.8</td><td style="color:#4ade80;font-weight:600;">8.0</td><td style="color:#4ade80;font-weight:600;">8.3</td></tr>
+            <tr><td style="color:#666;">Participants</td><td style="color:#666;">6</td><td style="color:#666;">9</td><td style="color:#666;">17</td><td style="color:#666;">41</td><td style="color:#666;">23</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- EP -->
+      <div class="sec-label" style="margin-bottom:10px;">EP (English Pathway) — students</div>
+      <div class="nps-table-wrap">
+        <table class="nps-table" role="table">
+          <thead><tr>
+            <th>Question</th>
+            <th>Jun 2024</th><th>Nov 2024</th><th>Apr 2025</th><th>Dec 2025</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Course quality</td><td><span class="score-chip score-hi">8.9</span></td><td><span class="score-chip score-hi">9.1</span></td><td><span class="score-chip score-hi">9.6</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr><td>Instructor quality</td><td><span class="score-chip score-hi">9.0</span></td><td><span class="score-chip score-hi">9.1</span></td><td><span class="score-chip score-hi">9.0</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr><td>Platform usability</td><td><span class="score-chip score-hi">8.5</span></td><td><span class="score-chip score-hi">9.1</span></td><td><span class="score-chip score-hi">8.9</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr><td>Technical support</td><td><span class="score-chip score-hi">9.2</span></td><td><span class="score-chip score-hi">9.1</span></td><td><span class="score-chip score-hi">8.4</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr><td>Likely to recommend</td><td><span class="score-chip score-hi">9.1</span></td><td><span class="score-chip score-hi">9.4</span></td><td><span class="score-chip score-hi">9.4</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr style="background:#1e1e1e;"><td style="color:#fff;font-weight:600;">Average</td><td style="color:#4ade80;font-weight:600;">8.9</td><td style="color:#4ade80;font-weight:600;">9.2</td><td style="color:#4ade80;font-weight:600;">9.1</td><td style="color:#555;font-weight:600;">N/A</td></tr>
+            <tr><td style="color:#666;">Participants</td><td style="color:#666;">13</td><td style="color:#666;">8</td><td style="color:#666;">15</td><td style="color:#666;">N/A</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GUC Ajman -->
+      <div class="sec-label" style="margin-bottom:10px;">GUC Ajman — students</div>
+      <div class="nps-table-wrap">
+        <table class="nps-table" role="table">
+          <thead><tr>
+            <th>Question</th><th>Dec 2025</th><th>Mar 2026</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Course quality</td><td><span class="score-chip score-hi">9.3</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr><td>Instructor quality</td><td><span class="score-chip score-hi">9.4</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr><td>Platform usability</td><td><span class="score-chip score-mid">7.6</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr><td>Technical support</td><td><span class="score-chip score-mid">7.4</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr><td>Likely to recommend</td><td><span class="score-chip score-mid">6.8</span></td><td><span class="score-chip score-lo">—</span></td></tr>
+            <tr style="background:#1e1e1e;"><td style="color:#fff;font-weight:600;">Average</td><td style="color:#f59e0b;font-weight:600;">8.1</td><td style="color:#555;font-weight:600;">N/A</td></tr>
+            <tr><td style="color:#666;">Participants</td><td style="color:#666;">8</td><td style="color:#666;">N/A</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- GBS Malta -->
+      <div class="sec-label" style="margin-bottom:10px;">GBS Malta — students</div>
+      <div class="nps-table-wrap">
+        <table class="nps-table" role="table">
+          <thead><tr>
+            <th>Question</th><th>Dec 2025</th><th>Mar 2026</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Course quality</td><td><span class="score-chip score-hi">8.8</span></td><td><span class="score-chip score-hi">8.3</span></td></tr>
+            <tr><td>Instructor quality</td><td><span class="score-chip score-hi">9.0</span></td><td><span class="score-chip score-hi">8.0</span></td></tr>
+            <tr><td>Platform usability</td><td><span class="score-chip score-hi">9.5</span></td><td><span class="score-chip score-hi">9.3</span></td></tr>
+            <tr><td>Technical support</td><td><span class="score-chip score-hi">9.5</span></td><td><span class="score-chip score-hi">8.8</span></td></tr>
+            <tr><td>Likely to recommend</td><td><span class="score-chip score-hi">9.3</span></td><td><span class="score-chip score-hi">8.3</span></td></tr>
+            <tr style="background:#1e1e1e;"><td style="color:#fff;font-weight:600;">Average</td><td style="color:#4ade80;font-weight:600;">9.2</td><td style="color:#4ade80;font-weight:600;">8.5</td></tr>
+            <tr><td style="color:#666;">Participants</td><td style="color:#666;">6</td><td style="color:#666;">4</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /nps-students -->
+
+    <!-- ── INSTRUCTORS TAB ── -->
+    <div class="nps-section" id="nps-instructors">
+      <div class="sec-label" style="margin-bottom:12px;">Instructor satisfaction — all partners</div>
+      <div class="nps-chart-card">
+        <div style="position:relative;width:100%;height:240px;">
+          <canvas id="npsInstructorsChart" role="img" aria-label="Line chart of instructor NPS scores over time">NPS instructors chart.</canvas>
+        </div>
+      </div>
+      <div class="nps-table-wrap">
+        <table class="nps-table" role="table">
+          <thead><tr>
+            <th>Question</th>
+            <th>Jun 2024</th><th>Nov 2024</th><th>Apr 2025</th><th>Dec 2025</th><th>Mar 2026</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Teaching experience on platform</td><td><span class="score-chip score-hi">8.0</span></td><td><span class="score-chip score-hi">8.5</span></td><td><span class="score-chip score-hi">8.8</span></td><td><span class="score-chip score-hi">8.2</span></td><td><span class="score-chip score-hi">9.3</span></td></tr>
+            <tr><td>Support received</td><td><span class="score-chip score-hi">9.8</span></td><td><span class="score-chip score-hi">9.0</span></td><td><span class="score-chip score-hi">9.4</span></td><td><span class="score-chip score-hi">8.8</span></td><td><span class="score-chip score-hi">9.7</span></td></tr>
+            <tr><td>Likely to recommend platform</td><td><span class="score-chip score-hi">8.5</span></td><td><span class="score-chip score-hi">8.4</span></td><td><span class="score-chip score-hi">8.9</span></td><td><span class="score-chip score-hi">8.5</span></td><td><span class="score-chip score-hi">9.4</span></td></tr>
+            <tr style="background:#1e1e1e;"><td style="color:#fff;font-weight:600;">Average</td><td style="color:#4ade80;font-weight:600;">8.8</td><td style="color:#4ade80;font-weight:600;">8.6</td><td style="color:#4ade80;font-weight:600;">9.0</td><td style="color:#4ade80;font-weight:600;">8.5</td><td style="color:#4ade80;font-weight:600;">9.5</td></tr>
+            <tr><td style="color:#666;">Participants</td><td style="color:#666;">12</td><td style="color:#666;">19</td><td style="color:#666;">8</td><td style="color:#666;">12</td><td style="color:#666;">7</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nps-table-wrap">
+        <table class="nps-table" role="table">
+          <thead><tr><th>Partner</th><th>Jun 2024</th><th>Nov 2024</th><th>Apr 2025</th><th>Dec 2025</th><th>Mar 2026</th></tr></thead>
+          <tbody>
+            <tr><td>EP</td><td>7</td><td>16</td><td>4</td><td>5</td><td>0</td></tr>
+            <tr><td>GBS Dubai</td><td>4</td><td>2</td><td>4</td><td>3</td><td>3</td></tr>
+            <tr><td>GBS Malta</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td></tr>
+            <tr><td>GUC Ajman</td><td>0</td><td>0</td><td>0</td><td>2</td><td>2</td></tr>
+            <tr><td>MetaApply</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+            <tr style="background:#1e1e1e;"><td style="color:#fff;font-weight:600;">Total</td><td style="color:#aaa;font-weight:600;">12</td><td style="color:#aaa;font-weight:600;">19</td><td style="color:#aaa;font-weight:600;">8</td><td style="color:#aaa;font-weight:600;">12</td><td style="color:#aaa;font-weight:600;">7</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /nps-instructors -->
+
+    <!-- ── STAKEHOLDERS TAB ── -->
+    <div class="nps-section" id="nps-stakeholders">
+      <div class="sec-label" style="margin-bottom:12px;">Stakeholder / partner satisfaction</div>
+      <div class="nps-chart-card">
+        <div style="position:relative;width:100%;height:240px;">
+          <canvas id="npsStakeholdersChart" role="img" aria-label="Line chart of stakeholder NPS scores over time">NPS stakeholders chart.</canvas>
+        </div>
+      </div>
+      <div class="nps-table-wrap">
+        <table class="nps-table" role="table">
+          <thead><tr>
+            <th>Question</th>
+            <th>Jun 2024</th><th>Nov 2024</th><th>Apr 2025</th><th>Dec 2025</th><th>Mar 2026</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Satisfaction with partnership</td><td><span class="score-chip score-hi">9.0</span></td><td><span class="score-chip score-hi">9.2</span></td><td><span class="score-chip score-hi">8.8</span></td><td><span class="score-chip score-hi">9.5</span></td><td><span class="score-chip score-hi">9.3</span></td></tr>
+            <tr><td>Quality of communication</td><td><span class="score-chip score-hi">10.0</span></td><td><span class="score-chip score-hi">9.3</span></td><td><span class="score-chip score-hi">8.8</span></td><td><span class="score-chip score-hi">9.5</span></td><td><span class="score-chip score-hi">9.7</span></td></tr>
+            <tr><td>Support received</td><td><span class="score-chip score-hi">10.0</span></td><td><span class="score-chip score-hi">9.7</span></td><td><span class="score-chip score-hi">9.0</span></td><td><span class="score-chip score-hi">9.5</span></td><td><span class="score-chip score-hi">9.7</span></td></tr>
+            <tr><td>Likely to recommend</td><td><span class="score-chip score-mid">4.0</span></td><td><span class="score-chip score-mid">4.8</span></td><td><span class="score-chip score-hi">8.3</span></td><td><span class="score-chip score-lo">N/A</span></td><td><span class="score-chip score-hi">9.3</span></td></tr>
+            <tr style="background:#1e1e1e;"><td style="color:#fff;font-weight:600;">Average (excl. recommend)</td><td style="color:#4ade80;font-weight:600;">9.7</td><td style="color:#4ade80;font-weight:600;">9.4</td><td style="color:#4ade80;font-weight:600;">8.8</td><td style="color:#4ade80;font-weight:600;">9.5</td><td style="color:#4ade80;font-weight:600;">9.5</td></tr>
+            <tr><td style="color:#666;">Participants</td><td style="color:#666;">3</td><td style="color:#666;">6</td><td style="color:#666;">4</td><td style="color:#666;">2</td><td style="color:#666;">3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nps-table-wrap">
+        <table class="nps-table" role="table">
+          <thead><tr><th>Partner</th><th>Jun 2024</th><th>Nov 2024</th><th>Apr 2025</th><th>Dec 2025</th><th>Mar 2026</th></tr></thead>
+          <tbody>
+            <tr><td>EP</td><td>1</td><td>4</td><td>2</td><td>0</td><td>0</td></tr>
+            <tr><td>GBS Dubai (DXB)</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+            <tr><td>GBS Malta</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+            <tr><td>GUC Ajman</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+            <tr><td>MetaApply</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+            <tr style="background:#1e1e1e;"><td style="color:#fff;font-weight:600;">Total</td><td style="color:#aaa;font-weight:600;">3</td><td style="color:#aaa;font-weight:600;">6</td><td style="color:#aaa;font-weight:600;">4</td><td style="color:#aaa;font-weight:600;">2</td><td style="color:#aaa;font-weight:600;">3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /nps-stakeholders -->
+
+  </div><!-- /page-nps -->
+
 </main>
 </div>
 
@@ -659,6 +1012,10 @@ body{background:#1a1a1a;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFo
 <script>
 /* ── Navigation ── */
 let gradChartInst = null;
+let npsStudentsChartInst = null;
+let npsInstructorsChartInst = null;
+let npsStakeholdersChartInst = null;
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
@@ -666,6 +1023,89 @@ function showPage(id) {
   document.getElementById('nav-' + id).classList.add('active');
   if (id === 'dashboard') renderCharts();
   if (id === 'enrolment') renderGradChart();
+  if (id === 'nps') renderNpsCharts();
+}
+
+function showNpsTab(tab) {
+  document.querySelectorAll('.nps-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nps-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('nps-' + tab).classList.add('active');
+  event.target.classList.add('active');
+  renderNpsCharts();
+}
+
+const NPS_LABELS = ['Jun 2024','Nov 2024','Apr 2025','Dec 2025','Mar 2026'];
+const CHART_DEFAULTS = {
+  tension: 0.35, fill: true, pointRadius: 5, pointHoverRadius: 7, borderWidth: 2
+};
+
+function renderNpsCharts() {
+  // Students chart
+  if (npsStudentsChartInst) npsStudentsChartInst.destroy();
+  const studEl = document.getElementById('npsStudentsChart');
+  if (studEl) {
+    npsStudentsChartInst = new Chart(studEl, {
+      type: 'line',
+      data: {
+        labels: NPS_LABELS,
+        datasets: [
+          { label: 'GBS Dubai', data: [9.0, 7.4, 8.8, 8.0, 8.3], borderColor: '#4ade80', backgroundColor: 'rgba(74,222,128,0.07)', pointBackgroundColor: '#4ade80', ...CHART_DEFAULTS },
+          { label: 'EP', data: [8.9, 9.2, 9.1, null, null], borderColor: '#a78bfa', backgroundColor: 'rgba(167,139,250,0.07)', pointBackgroundColor: '#a78bfa', ...CHART_DEFAULTS },
+          { label: 'GBS Malta', data: [null, null, null, 9.2, 8.5], borderColor: '#60a5fa', backgroundColor: 'rgba(96,165,250,0.07)', pointBackgroundColor: '#60a5fa', ...CHART_DEFAULTS },
+          { label: 'GUC Ajman', data: [null, null, null, 8.1, null], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.07)', pointBackgroundColor: '#f59e0b', ...CHART_DEFAULTS }
+        ]
+      },
+      options: npsChartOptions('Average NPS score (out of 10)')
+    });
+  }
+
+  // Instructors chart
+  if (npsInstructorsChartInst) npsInstructorsChartInst.destroy();
+  const instEl = document.getElementById('npsInstructorsChart');
+  if (instEl) {
+    npsInstructorsChartInst = new Chart(instEl, {
+      type: 'line',
+      data: {
+        labels: NPS_LABELS,
+        datasets: [
+          { label: 'Average instructor score', data: [8.8, 8.6, 9.0, 8.5, 9.5], borderColor: '#60a5fa', backgroundColor: 'rgba(96,165,250,0.09)', pointBackgroundColor: '#60a5fa', ...CHART_DEFAULTS }
+        ]
+      },
+      options: npsChartOptions('Average score (out of 10)')
+    });
+  }
+
+  // Stakeholders chart
+  if (npsStakeholdersChartInst) npsStakeholdersChartInst.destroy();
+  const stakeEl = document.getElementById('npsStakeholdersChart');
+  if (stakeEl) {
+    npsStakeholdersChartInst = new Chart(stakeEl, {
+      type: 'line',
+      data: {
+        labels: NPS_LABELS,
+        datasets: [
+          { label: 'Avg (excl. recommend)', data: [9.7, 9.4, 8.8, 9.5, 9.5], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,0.09)', pointBackgroundColor: '#f59e0b', ...CHART_DEFAULTS },
+          { label: 'Likely to recommend', data: [4.0, 4.8, 8.3, null, 9.3], borderColor: '#f87171', backgroundColor: 'rgba(248,113,113,0.07)', pointBackgroundColor: '#f87171', ...CHART_DEFAULTS }
+        ]
+      },
+      options: npsChartOptions('Score (out of 10)')
+    });
+  }
+}
+
+function npsChartOptions(yLabel) {
+  return {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'top', labels: { color: '#aaa', font: { size: 11 }, boxWidth: 10, padding: 14 } },
+      tooltip: { backgroundColor: '#1e1e1e', borderColor: '#333', borderWidth: 1, titleColor: '#fff', bodyColor: '#aaa', padding: 10 }
+    },
+    scales: {
+      x: { ticks: { color: '#666', font: { size: 11 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+      y: { min: 4, max: 10, ticks: { color: '#666', font: { size: 11 }, stepSize: 1 }, grid: { color: 'rgba(255,255,255,0.04)' }, title: { display: true, text: yLabel, color: '#555', font: { size: 10 } } }
+    }
+  };
 }
 
 function renderGradChart() {
@@ -907,6 +1347,85 @@ const today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',y
 document.getElementById('upd-date').textContent=today;
 document.getElementById('footer-date').textContent=today;
 render();
+
+/* ── PDF / Print export ── */
+function openExportModal() {
+  document.getElementById('pdf-overlay').classList.add('show');
+}
+function closeExportModal(e) {
+  if (!e || e.target === document.getElementById('pdf-overlay')) {
+    document.getElementById('pdf-overlay').classList.remove('show');
+    document.getElementById('pdf-spinner').style.display = 'none';
+  }
+}
+function printPage() {
+  window.print();
+}
+function executePdfExport() {
+  const allPages = document.getElementById('opt-all').checked;
+  const spinner = document.getElementById('pdf-spinner');
+  spinner.style.display = 'block';
+
+  if (allPages) {
+    // Show all pages temporarily for print
+    const pages = document.querySelectorAll('.page');
+    const origDisplay = [];
+    pages.forEach((p, i) => { origDisplay[i] = p.style.display; p.style.display = 'block'; });
+    setTimeout(() => {
+      window.print();
+      pages.forEach((p, i) => { p.style.display = origDisplay[i]; });
+      spinner.style.display = 'none';
+      closeExportModal();
+    }, 300);
+  } else {
+    setTimeout(() => {
+      window.print();
+      spinner.style.display = 'none';
+      closeExportModal();
+    }, 200);
+  }
+}
+
+// Sync checkboxes so they're mutually exclusive
+document.getElementById('opt-current').addEventListener('change', function() {
+  if (this.checked) document.getElementById('opt-all').checked = false;
+});
+document.getElementById('opt-all').addEventListener('change', function() {
+  if (this.checked) document.getElementById('opt-current').checked = false;
+});
 </script>
+<!-- ── PDF Export Modal ── -->
+<div class="pdf-overlay" id="pdf-overlay" onclick="closeExportModal(event)">
+  <div class="pdf-modal" onclick="event.stopPropagation()">
+    <div class="pdf-modal-title">Download as PDF</div>
+    <div class="pdf-modal-sub">Choose what to include in your export. The PDF will match exactly what you see on screen.</div>
+
+    <label class="pdf-option">
+      <input type="checkbox" id="opt-current" checked>
+      <div>
+        <div class="pdf-option-label">Current page only</div>
+        <div class="pdf-option-sub">Exports only the page you are viewing</div>
+      </div>
+    </label>
+    <label class="pdf-option">
+      <input type="checkbox" id="opt-all">
+      <div>
+        <div class="pdf-option-label">All pages</div>
+        <div class="pdf-option-sub">Includes all four report sections</div>
+      </div>
+    </label>
+
+    <div id="pdf-spinner" class="pdf-spinner">Preparing your PDF…</div>
+
+    <div class="pdf-modal-actions">
+      <button class="export-btn" onclick="closeExportModal()">Cancel</button>
+      <button class="export-btn primary" onclick="executePdfExport()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" style="width:13px;height:13px;"><path d="M8 2v8M5 7l3 3 3-3M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
+        Download
+      </button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
